@@ -12,12 +12,12 @@ class MainActivity : AppCompatActivity() {
         val button1 = findViewById<Button>(R.id.button1)
         val button2 = findViewById<Button>(R.id.button2)
 
-        button1.setOnClickListener{
+        button1.setOnClickListener {
             val intent = SecondActivity.createStartIntent(this)
             startActivity(intent)
         }
 
-        button2.setOnClickListener{
+        button2.setOnClickListener {
             val intent = ThirdActivity.createStartIntent(this)
             startActivity(intent)
         }

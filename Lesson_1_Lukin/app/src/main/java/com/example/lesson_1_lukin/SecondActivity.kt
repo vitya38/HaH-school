@@ -7,13 +7,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.view.View
-import java.util.*
 
 class SecondActivity : AppCompatActivity() {
 
-    companion object{
-        fun createStartIntent(context: Context): Intent{
+    companion object {
+        fun createStartIntent(context: Context): Intent {
             return Intent(context, SecondActivity::class.java)
         }
     }
@@ -26,20 +24,19 @@ class SecondActivity : AppCompatActivity() {
         val button2 = findViewById<Button>(R.id.button3)
         val editText = findViewById<EditText>(R.id.editText)
         val textView = findViewById<TextView>(R.id.textView)
-        val people = TreeSet<String>()
+        val people = sortedSetOf<String>()
 
-        button1.setOnClickListener{
+        button1.setOnClickListener {
             val name = editText.text.toString()
             people.add(name)
             editText.text.clear()
         }
 
-        button2.setOnClickListener{
+        button2.setOnClickListener {
             textView.setText("")
-            people.sorted()
             var result = ""
-            people.forEach{
-                result+=it + '\n'
+            people.forEach {
+                result += it + '\n'
             }
             textView.setText(result)
         }
