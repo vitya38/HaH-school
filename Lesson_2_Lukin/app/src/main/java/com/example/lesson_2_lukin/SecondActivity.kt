@@ -20,16 +20,5 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-
-        val textView = findViewById<TextView>(R.id.textView2)
-        textView.setText(R.string.pushkin)
-
-        val myImage = ResourcesCompat.getDrawable(resources, R.drawable.picture, null)
-
-        val imageView = findViewById<ImageView>(R.id.imageView)
-        imageView.setImageDrawable(myImage)
-
-        val button = findViewById<Button>(R.id.button2)
-        button.setText(R.string.buttonName)
     }
 }

@@ -10,12 +10,12 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="208dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="103dp"
-        android:layout_marginEnd="89dp"
-        android:layout_marginBottom="70dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginBottom="81dp"
         app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/squares" />
 
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="302dp"
         android:background="@drawable/button_selector"
-        android:text="@string/buttonName2"
+        android:text="@string/button_name2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
