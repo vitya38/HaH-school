@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:textColor="@color/my_gray"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/text2"
@@ -20,6 +20,6 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="26dp"
         android:textColor="@color/my_black"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
 </LinearLayout>

@@ -22,52 +22,61 @@ class NotConstraint : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_not_constraint)
 
-        var include_view = findViewById<View>(R.id.include1)
-        var textView = include_view.findViewById<TextView>(R.id.text1)
+
+        val myAccount = Account(
+            "Анастасия", "Антонина", "anykee.box@gmail.ru",
+            "HIE023UOI88", "Санкт-Петербург", "7898769", "Специалист"
+        )
+
+        var includeView = findViewById<View>(R.id.include1)
+        var textView = includeView.findViewById<TextView>(R.id.text1)
+
         textView.setText(R.string.name)
-        textView = include_view.findViewById<TextView>(R.id.text2)
-        textView.setText(R.string.anastasya)
+        textView = includeView.findViewById<TextView>(R.id.text2)
+        textView.setText(myAccount.name)
 
-        include_view = findViewById<View>(R.id.include2)
-        textView = include_view.findViewById<TextView>(R.id.text1)
+        includeView = findViewById<View>(R.id.include2)
+        textView = includeView.findViewById<TextView>(R.id.text1)
         textView.setText(R.string.surname)
-        textView = include_view.findViewById<TextView>(R.id.text2)
-        textView.setText(R.string.antonina)
+        textView = includeView.findViewById<TextView>(R.id.text2)
+        textView.setText(myAccount.surname)
 
-        include_view = findViewById<View>(R.id.include3)
-        textView = include_view.findViewById<TextView>(R.id.text1)
+        includeView = findViewById<View>(R.id.include3)
+        textView = includeView.findViewById<TextView>(R.id.text1)
         textView.setText(R.string.email)
-        textView = include_view.findViewById<TextView>(R.id.text2)
-        textView.setText(R.string.email_adress)
+        textView = includeView.findViewById<TextView>(R.id.text2)
+        textView.setText(myAccount.email)
 
-        include_view = findViewById<View>(R.id.include4)
-        textView = include_view.findViewById<TextView>(R.id.text1)
+        includeView = findViewById<View>(R.id.include4)
+        textView = includeView.findViewById<TextView>(R.id.text1)
         textView.setText(R.string.login)
-        textView = include_view.findViewById<TextView>(R.id.text2)
-        textView.setText(R.string.log_name)
+        textView = includeView.findViewById<TextView>(R.id.text2)
+        textView.setText(myAccount.login)
 
-        textView = findViewById<TextView>(R.id.text_with_icon1)
+        textView = findViewById<TextView>(R.id.textWithIcon1)
         textView.setText(R.string.region)
-        textView = findViewById<TextView>(R.id.text_with_icon2)
-        textView.setText(R.string.region_name)
+        textView = findViewById<TextView>(R.id.textWithIcon2)
+        textView.setText(myAccount.region)
 
-        textView = findViewById<TextView>(R.id.text_exit)
+        textView = findViewById<TextView>(R.id.textExit)
         textView.setText(R.string.exit)
+        textView = findViewById(R.id.card)
+        textView.setText("Карта №" + myAccount.cardNumber + " " + myAccount.job)
 
-        val imageButton1 = findViewById<ImageButton>(R.id.image_button1)
-        imageButton1.setOnClickListener {
+        val imageButton = findViewById<ImageButton>(R.id.imageButton1)
+        imageButton.setOnClickListener {
             val toast = Toast.makeText(applicationContext, R.string.toast_message, Toast.LENGTH_SHORT)
             toast.show()
         }
 
-        val imageButton2 = findViewById<ImageButton>(R.id.image_button2)
-        imageButton2.setOnClickListener {
-            val toast = Toast.makeText(applicationContext, R.string.toast_message, Toast.LENGTH_SHORT)
-            toast.show()
+        val textButton = findViewById<TextView>(R.id.textExit)
+        textButton.setOnClickListener {
+            val Toast = Toast.makeText(applicationContext, R.string.toast_message, Toast.LENGTH_SHORT)
+            Toast.show()
         }
 
         val toolbar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.toolbar)
-        toolbar.setNavigationOnClickListener{
+        toolbar.setNavigationOnClickListener {
             val toast = Toast.makeText(applicationContext, R.string.toast_message, Toast.LENGTH_SHORT)
             toast.show()
         }

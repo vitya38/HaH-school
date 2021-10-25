@@ -39,6 +39,7 @@
                 android:src="@drawable/img_profile_spechialist" />
 
             <TextView
+                android:id="@+id/card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
@@ -46,9 +47,8 @@
                 android:layout_marginEnd="76dp"
                 android:layout_marginBottom="24dp"
                 android:layout_toEndOf="@id/image"
-                android:text="@string/top_text"
                 android:textColor="@color/my_black"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
         </RelativeLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -1,18 +1,12 @@
 <resources>
     <string name="app_name">Lesson_3_Lukin</string>
     <string name="profile">Личный профиль</string>
-    <string name="top_text">Карта №7898769 Специалист</string>
     <string name="personal_data">Личные данные</string>
     <string name="name">Имя</string>
-    <string name="anastasya">Анастасия</string>
     <string name="surname">Фамилия</string>
-    <string name="antonina">Антонина</string>
     <string name="email">E-mail</string>
-    <string name="email_adress">anykee.box@gmail.ru</string>
     <string name="login">Логин</string>
-    <string name="log_name">HIE023UOI88</string>
     <string name="region">Ваш регион</string>
-    <string name="region_name">Санкт-Петербург</string>
     <string name="exit">Выйти из аккаунта</string>
     <string name="toast_message">Я работаю</string>
     <string name="not_constraint">Not Constraint</string>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/yellow_text_view"
+        android:id="@+id/yellowTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -26,7 +26,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/yellow_text_view" />
+        app:layout_constraintTop_toBottomOf="@id/yellowTextView" />
 
     <include
         android:id="@+id/include2"
@@ -59,73 +59,61 @@
         app:layout_constraintTop_toBottomOf="@id/include3" />
 
     <TextView
-        android:id="@+id/text_with_icon1"
+        android:id="@+id/textWithIcon1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
         android:textColor="@color/my_gray"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@id/image_button1"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@id/imageButton1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include4" />
 
     <TextView
-        android:id="@+id/text_with_icon2"
+        android:id="@+id/textWithIcon2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/text_with_icon1"
+        android:layout_below="@id/textWithIcon1"
         android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
         android:textColor="@color/my_black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@id/image_button1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/imageButton1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_with_icon1" />
+        app:layout_constraintTop_toBottomOf="@+id/textWithIcon1" />
 
     <ImageButton
-        android:id="@+id/image_button1"
+        android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="320dp"
         android:layout_marginEnd="20dp"
-        android:background="?selectableItemBackground"
+        android:background="?selectableItemBackgroundBorderless"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_edit_black_24px"
-        app:layout_constraintBottom_toTopOf="@id/text_with_icon2"
+        app:layout_constraintBottom_toTopOf="@id/textWithIcon2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_with_icon1" />
-
-    <ImageButton
-        android:id="@+id/image_button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="38dp"
-        android:background="?selectableItemBackground"
-        android:backgroundTint="@color/white"
-        android:src="@drawable/ic_menu_exit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/text_exit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_with_icon2" />
+        app:layout_constraintTop_toBottomOf="@id/textWithIcon1" />
 
     <TextView
-        android:id="@+id/text_exit"
+        android:id="@+id/textExit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="32dp"
-        android:layout_toRightOf="@id/image_button2"
+        android:background="?selectableItemBackground"
+        android:drawablePadding="32dp"
         android:textColor="@color/my_black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        app:drawableStartCompat="@drawable/ic_menu_exit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_button2"
-        app:layout_constraintTop_toBottomOf="@id/text_with_icon2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textWithIcon2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
