@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/menu"
+            app:navigationIcon="@drawable/ic_arrow_back_black_24px"
+            app:title="@string/profile"
+            app:titleTextColor="@color/my_black" />
+
+        <!-- app:navigationIcon="установить" -->
+
+        <!-- TODO тут делать контент шапки, можно заменить на констренит -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:src="@drawable/img_profile_spechialist" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="76dp"
+                android:layout_marginBottom="24dp"
+                android:layout_toEndOf="@id/image"
+                android:text="@string/top_text"
+                android:textColor="@color/my_black"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</LinearLayout>
