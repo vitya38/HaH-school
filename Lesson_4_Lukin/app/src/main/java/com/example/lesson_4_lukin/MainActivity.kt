@@ -32,9 +32,9 @@ class MainActivity : AppCompatActivity() {
         DetailInfoItem(R.drawable.ic_tv, "Интернет и ТВ", "Баланс 350 Р", false),
         DetailInfoItem(R.drawable.ic_homephone, "Домофон", "Подключен", false),
         DetailInfoItem(R.drawable.ic_guard, "Охрана", "Нет", false),
-        BaseInfoItem(R.drawable.ic_uk_contacts, "Контакты УК и служб", ""),
-        BaseInfoItem(R.drawable.ic_request, "Мои заявки", ""),
-        BaseInfoItem(R.drawable.ic_about, "Памятка жителя А101", "")
+        BaseInfoItem(R.drawable.ic_uk_contacts, "Контакты УК и служб"),
+        BaseInfoItem(R.drawable.ic_request, "Мои заявки"),
+        BaseInfoItem(R.drawable.ic_about, "Памятка жителя А101")
     )
 
     private val viewFlipper by lazy { findViewById<ViewFlipper>(R.id.viewFlipper) }

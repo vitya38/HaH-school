@@ -27,9 +27,10 @@ class DetailInfoItemViewHolder(
         imageView.setImageResource(detail.icon)
         textViewCardName.text = detail.cardName
         textViewCardText.text = detail.cardText
-        if (detail.isRedText)
+        if (detail.isRedText) {
             textViewCardText.setTextColor(Color.parseColor("#FF4242"))
-        else
+        } else {
             textViewCardText.setTextColor(Color.parseColor("#888888"))
+        }
     }
 }

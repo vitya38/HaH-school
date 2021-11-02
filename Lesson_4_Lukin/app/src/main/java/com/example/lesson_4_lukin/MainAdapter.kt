@@ -6,12 +6,14 @@ import com.example.lesson_4_lukin.model.BaseInfoItem
 import com.example.lesson_4_lukin.model.BaseInfoItemViewHolder
 import com.example.lesson_4_lukin.model.DetailInfoItem
 import com.example.lesson_4_lukin.model.DetailInfoItemViewHolder
+import com.example.lesson_4_lukin.model.MixedInfoItemViewHolder
 import java.lang.Exception
 
 class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         private const val BASE_TYPE = 0
         private const val DETAIL_TYPE = 1
+        private const val MIXED_TYPE = 2
     }
 
     private val items = mutableListOf<BaseInfoItem>()
@@ -22,6 +24,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         return when (viewType) {
             BASE_TYPE -> BaseInfoItemViewHolder(parent, onItemClick)
             DETAIL_TYPE -> DetailInfoItemViewHolder(parent, onItemClick)
+            MIXED_TYPE -> MixedInfoItemViewHolder(parent, onItemClick)
             else -> throw Exception("Unsupported view type")
         }
     }
@@ -30,6 +33,7 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         when (getItemViewType(position)) {
             BASE_TYPE -> (holder as BaseInfoItemViewHolder).bind(items[position])
             DETAIL_TYPE -> (holder as DetailInfoItemViewHolder).bind(items[position] as DetailInfoItem)
+            MIXED_TYPE -> (holder as MixedInfoItemViewHolder).bind(items[position] as DetailInfoItem)
         }
     }
 
@@ -48,6 +52,8 @@ class MainAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemViewType(position: Int): Int {
         return if (items[position] is DetailInfoItem && items[position + 1] is DetailInfoItem) {
             DETAIL_TYPE
+        } else if (items[position] is DetailInfoItem) {
+            MIXED_TYPE
         } else {
             BASE_TYPE
         }
