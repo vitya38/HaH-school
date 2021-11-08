@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lesson_5_Lukin</string>
+    <string name="go_to_1">go to 1</string>
+    <string name="go_to_2">go to 2</string>
+    <string name="go_to_3">go to 3</string>
+    <string name="go_to_4">go to 4</string>
+    <string name="go_to_5">go to 5</string>
+    <string name="go_to_4_again">go to 4 again</string>
+    <string name="deliver_result">deliver result</string>
+    <string name="save">Сохранить</string>
+</resources>
