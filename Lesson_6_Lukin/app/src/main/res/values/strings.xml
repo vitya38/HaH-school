@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Lesson_6_Lukin</string>
+    <string name="item_one">Item one</string>
+    <string name="item_two">Item two</string>
+    <string name="item_three">Item three</string>
+    <string name="info">info</string>
+    <string name="loupe">loupe</string>
+    <string name="lamp">lamp</string>
+    <string name="sub_menu1">sub menu 1</string>
+    <string name="sub_menu2">sub menu 2</string>
+    <string name="sub_menu3">sub menu 3</string>
+    <string name="day">День</string>
+    <string name="night">Ночь</string>
+    <string name="peak">Пик</string>
+    <string name="new_indications">Новые показания</string>
+    <string name="alert">Необходимоп подать показания до 25.03.18</string>
+    <string name="alert2">Показания сданы <b>16.02.18</b> и будут учтены при следующем расчете <b>25.02.18</b> </string>
+    <string name="show_banner">ПОКАЗАТЬ БАННЕР</string>
+    <string name="hide_banner">СВЕРНУТЬ БАННЕР</string>
+</resources>
