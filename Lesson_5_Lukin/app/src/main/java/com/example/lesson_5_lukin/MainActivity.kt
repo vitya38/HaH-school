@@ -4,13 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        const val DATE = "date"
         fun createStartIntent(context: Context): Intent {
             return Intent(context, MainActivity::class.java)
         }
@@ -26,9 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<MaterialButton>(R.id.button4).setOnClickListener {
-            startActivity(FourthActivity.createStartIntent(this).apply {
-                putExtra(DATE, System.currentTimeMillis())
-            })
+            startActivity(FourthActivity.createStartIntent(this, System.currentTimeMillis()))
         }
     }
 }

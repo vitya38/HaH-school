@@ -2,31 +2,33 @@ package com.example.lesson_5_lukin
 
 import android.content.Context
 import android.content.Intent
-import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.google.android.material.button.MaterialButton
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class FourthActivity : AppCompatActivity() {
 
     companion object {
         const val DATE = "date"
 
-        fun createStartIntent(context: Context): Intent {
-            return Intent(context, FourthActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        fun createStartIntent(context: Context, millis: Long): Intent {
+            return Intent(context, FourthActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP).apply {
+                putExtra(DATE, millis)
+            }
         }
     }
 
-    val textView1 by lazy { findViewById<TextView>(R.id.textView1) }
+    private val textView1 by lazy { findViewById<TextView>(R.id.textView1) }
 
-    fun time(intent: Intent?) {
-
-        val formater = SimpleDateFormat("dd.MM.yyyy HH:mm:ss")
+    private fun time(intent: Intent?) {
+        val formater = SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault())
         val date = Date(intent?.getSerializableExtra(DATE).toString().toLong())
         val formated = formater.format(date)
-        textView1.setText(formated)
+        textView1.text = formated
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +36,7 @@ class FourthActivity : AppCompatActivity() {
         setContentView(R.layout.activity_fourth)
         time(intent)
         findViewById<MaterialButton>(R.id.buttonAgain4).setOnClickListener {
-            startActivity(FourthActivity.createStartIntent(this).apply {
-                putExtra(MainActivity.DATE, System.currentTimeMillis())
-            })
+            startActivity(createStartIntent(this, System.currentTimeMillis()))
         }
     }
 

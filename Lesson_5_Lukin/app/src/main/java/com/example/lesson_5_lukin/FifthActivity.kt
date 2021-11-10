@@ -22,9 +22,9 @@ class FifthActivity : AppCompatActivity() {
         }
     }
 
-    val editText by lazy { findViewById<EditText>(R.id.editText) }
-    val textView by lazy { findViewById<TextView>(R.id.textView2) }
-    val saveData by lazy { Data(editText.text.toString()) }
+    private val editText by lazy { findViewById<EditText>(R.id.editText) }
+    private val textView by lazy { findViewById<TextView>(R.id.textView2) }
+    private val saveData by lazy { Data(editText.text.toString()) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,7 @@ class FifthActivity : AppCompatActivity() {
 
         if (savedInstanceState != null && savedInstanceState.containsKey(DATA)) {
             val oldData = savedInstanceState.getParcelable<Parcelable>(DATA) as Data
-            textView.setText(oldData.value)
+            textView.text = oldData.value
         }
         findViewById<MaterialButton>(R.id.buttonDeliverResult).setOnClickListener {
             val text = editText.text.toString()
@@ -40,14 +40,14 @@ class FifthActivity : AppCompatActivity() {
             finish()
         }
         findViewById<MaterialButton>(R.id.buttonSave).setOnClickListener {
-            textView.setText(saveData.value)
+            textView.text = saveData.value
         }
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         val oldData = savedInstanceState.getParcelable<Parcelable>(DATA) as Data
-        textView.setText(oldData.value)
+        textView.text = oldData.value
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

@@ -17,7 +17,7 @@ class ThirdActivity : AppCompatActivity() {
         }
     }
 
-    val view by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
+    private val view by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
 
     private val launcher = registerForActivityResult(FifthActivityContract()) {
         Snackbar.make(view, it.toString(), Snackbar.LENGTH_SHORT).show()
