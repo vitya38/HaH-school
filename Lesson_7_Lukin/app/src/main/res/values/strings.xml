@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Lesson_7_Lukin</string>
+    <string name="title">The Most SPB</string>
+    <string name="map">Карта</string>
+    <string name="info">Информация</string>
+    <string name="alert">Данных нет</string>
+    <string name="something_goes_wrong">Что-то пошло не так</string>
+    <string name="positive_button">ОК</string>
+    <string name="remind">НАПОМНИТЬ</string>
+    <string name="back">НАЗАД</string>
+    <string name="dont_work">Временно не работает</string>
+</resources>
