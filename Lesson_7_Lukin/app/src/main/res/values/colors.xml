@@ -12,4 +12,5 @@
     <color name="my_black">#000000</color>
     <color name="yellow">#FCD22B</color>
     <color name="red">#EB1C23</color>
+    <color name="trans">#00000000</color>
 </resources>
