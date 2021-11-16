@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lesson_8_Lukin</string>
+    <string name="color">Цвет</string>
+    <string name="title">Название</string>
+    <string name="text_note">Текст заметки</string>
+    <string name="empty">У вас пока нет заметок</string>
+    <string name="what_to_do">Что сделать?</string>
+    <string name="archive">Архивировать заметку</string>
+    <string name="delete">Удалить заметку</string>
+</resources>
