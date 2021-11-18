@@ -11,4 +11,6 @@
     <color name="toolbar_color">#FEB92D</color>
     <color name="gray">#7B7B7B</color>
     <color name="background">#E5E5E5</color>
+    <color name="gray_text">#606060</color>
+    <color name="transparent">#00000000</color>
 </resources>
