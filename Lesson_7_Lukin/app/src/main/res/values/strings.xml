@@ -8,5 +8,6 @@
     <string name="positive_button">ОК</string>
     <string name="remind">НАПОМНИТЬ</string>
     <string name="back">НАЗАД</string>
+    <string name="bell">Колокольчик</string>
     <string name="dont_work">Временно не работает</string>
 </resources>

@@ -18,6 +18,7 @@ import kotlin.math.abs
 class BridgeViewHolder(
     parent: ViewGroup,
     private val onItemCLick: (BridgeToSend) -> Unit,
+    private val onBellClick: () -> Unit,
 ) : RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.card_bridge, parent, false)
 ) {
@@ -82,6 +83,9 @@ class BridgeViewHolder(
         }
         itemView.setOnClickListener {
             onItemCLick(BridgeToSend(bridge.name, timeClose, bridge.description, picture, icon))
+        }
+        imageViewBell.setOnClickListener {
+            onBellClick()
         }
     }
 

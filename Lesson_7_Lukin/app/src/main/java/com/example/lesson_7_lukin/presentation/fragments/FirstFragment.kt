@@ -77,6 +77,9 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
         adapter.onItemCLick = { bridge ->
             firstFragmentListener?.click(bridge)
         }
+        adapter.onBellClick = {
+            Toast.makeText(context, R.string.bell, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setStateEmpty() {

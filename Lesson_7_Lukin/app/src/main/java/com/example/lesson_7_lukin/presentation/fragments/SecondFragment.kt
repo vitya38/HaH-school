@@ -42,12 +42,13 @@ class SecondFragment : Fragment(R.layout.fragment_second) {
         binding.include.textViewBridgeName.text = bridge.name
         binding.include.textViewTime.text = bridge.closeTime
         binding.textViewBridgeDescription.text = bridge.description
-        binding.buttonBack.setOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             firstFragmentListener?.backClick()
         }
         binding.buttonHelp.setOnClickListener {
             Toast.makeText(context, R.string.dont_work, Toast.LENGTH_SHORT).show()
         }
+
     }
 
 }
