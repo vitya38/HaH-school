@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lesson_9_Lukin</string>
+    <string name="button_name">Скачать файл</string>
+    <string name="temp">Температура</string>
+    <string name="feels_like">Ощущается как</string>
+    <string name="temp_max">Максимальная температура</string>
+    <string name="temp_min">Минимальная температура</string>
+</resources>
