@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lesson_10_Lukin</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title">The Most SPB</string>
+    <string name="something_goes_wrong">Что-то пошло не так</string>
+    <string name="positive_button">Повторить</string>
+</resources>
