@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), ServiceCallbacks {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             bound = true
             myBinder = service as MyBinder
-            myBinder!!.service.setCallbacks(this@MainActivity)
+            myBinder?.service?.setCallbacks(this@MainActivity)
         }
 
         override fun onServiceDisconnected(name: ComponentName?) {
@@ -82,8 +82,10 @@ class MainActivity : AppCompatActivity(), ServiceCallbacks {
         }
     }
 
-    override fun setWeather(weather: Weather) {
-        setData(weather)
+    override fun setWeather(weather: Weather?) {
+        if (weather != null) {
+            setData(weather)
+        }
     }
 
     private fun setData(weather: Weather) {

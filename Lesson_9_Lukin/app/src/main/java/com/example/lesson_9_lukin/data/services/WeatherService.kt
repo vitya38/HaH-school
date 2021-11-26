@@ -6,19 +6,19 @@ import android.os.Binder
 import android.os.IBinder
 import com.example.lesson_9_lukin.data.ServiceCallbacks
 import com.example.lesson_9_lukin.data.weather.Weather
-import com.example.lesson_9_lukin.data.remoute.WeatherApi
+import com.example.lesson_9_lukin.data.remote.WeatherApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.concurrent.TimeUnit
 
 
 class WeatherService : Service() {
 
 
-    private lateinit var job: Job
-    private lateinit var weather: Weather
+    private var job: Job? = null
+    private var weather: Weather? = null
     private val coroutine = CoroutineScope(Dispatchers.IO)
     private var serviceCallbacks: ServiceCallbacks? = null
 
@@ -37,7 +37,7 @@ class WeatherService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        job.cancel()
+        job?.cancel()
     }
 
     private fun getWeatherEveryMinute() {
@@ -45,10 +45,9 @@ class WeatherService : Service() {
             while (true) {
                 weather = WeatherApi.apiService.getWeather()
                 serviceCallbacks?.setWeather(weather)
-                TimeUnit.MINUTES.sleep(1)
+                delay(60 * 1000L)
             }
         }
-        stopSelf()
     }
 
     fun setCallbacks(callbacks: ServiceCallbacks) {
