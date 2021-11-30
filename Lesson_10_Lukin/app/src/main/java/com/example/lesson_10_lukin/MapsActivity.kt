@@ -45,7 +45,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val mapFragment = supportFragmentManager
@@ -87,10 +86,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         val time = printDivorces(bridges[i].divorces)
                         val icon = time(bridges[i].divorces)
                         val name = bridges[i].name
-                        binding.included.textViewBridgeName.text = name
-                        binding.included.textViewTime.text = time
-                        binding.included.imageViewBridge.setImageResource(icon)
-                        binding.included.card.isVisible = true
+                        binding.included.apply {
+                            textViewBridgeName.text = name
+                            textViewTime.text = time
+                            imageViewBridge.setImageResource(icon)
+                            card.isVisible = true
+                        }
+                        break
                     }
                 }
             }
@@ -102,12 +104,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         bridges.forEach { bridge ->
             val icon = time(bridge.divorces)
             val name = bridge.name
-
             val lat = bridge.lat
             val lng = bridge.lng
-            val latlng = LatLng(lat!!, lng!!)
-            val marker = map?.addMarker(MarkerOptions().position(latlng).icon(BitmapDescriptorFactory.fromResource(icon)))
-            marker?.tag = name
+            if (lat != null && lng != null) {
+                val latlng = LatLng(lat, lng)
+                val marker = map?.addMarker(
+                    MarkerOptions().position(latlng).icon(BitmapDescriptorFactory.fromResource(icon)).anchor(0.5f, 0.5f)
+                )
+                marker?.tag = name
+            }
         }
         binding.progressBar.isVisible = false
     }
@@ -163,10 +168,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             builder.append(' ')
             builder.append(divorces.end)
             val timeFromListEnd = format.parse(builder.toString())?.time
-            if (now in timeFromListStart!!..timeFromListEnd!!) {
-                return R.drawable.ic_brige_late
-            } else if (abs(timeFromListStart - now) <= hour) {
-                result = R.drawable.ic_brige_soon
+            if (timeFromListEnd != null && timeFromListStart != null) {
+                if (now in timeFromListStart..timeFromListEnd) {
+                    return R.drawable.ic_brige_late
+                } else if (abs(timeFromListStart - now) <= hour) {
+                    result = R.drawable.ic_brige_soon
+                }
             }
         }
         return result
