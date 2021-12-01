@@ -7,9 +7,6 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.util.TypedValue
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -28,67 +25,39 @@ class GraphView : View {
         init(context, attrs)
     }
 
-    private val twoDp = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        2.toFloat(), resources.displayMetrics
-    )
-
     private val day = 1000 * 60 * 60 * 24L
     private var textColor = Color.GREEN
     private var rowColor = Color.YELLOW
-    private var rowCount = 9
-    private var rowValues = listOf(10, 20, 30, 40, 50, 60, 70, 80, 90)
-    private val formatter = SimpleDateFormat("dd.MM", Locale.getDefault())
-    private val today = Date()
-    private var animationFlag = false
-    private var myHeight = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        2.toFloat(), resources.displayMetrics
-    )
-    private val gestureListener: GestureDetector.OnGestureListener = object : GestureDetector.SimpleOnGestureListener() {
-        override fun onDown(e: MotionEvent?): Boolean {
-            return true
-        }
-    }
-    private val gestureDetector = GestureDetector(context, gestureListener)
+    private var rowCount = 1
+    private val formatter = SimpleDateFormat("MMM.dd", Locale.getDefault())
+    private var today = Date().time
+    private var animationHeight = 0f
+    private var ratioOfProportion = 0f
+    private var myHeight = 0f
+    private var rows = mutableListOf<Data>()
     private var animation: ValueAnimator? = null
 
 
     private val rowPaint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
             color = rowColor
-            val dpSize = 4
-            val scaledSizeInPixels = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP,
-                dpSize.toFloat(), resources.displayMetrics
-            )
-            strokeWidth = scaledSizeInPixels
+            strokeWidth = resources.getDimension(R.dimen.row_width)
         }
     }
 
-    private val textPaint by lazy {
+    private val datePaint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            val spSize = 12
             color = textColor
-            val scaledSizeInPixels = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_SP,
-                spSize.toFloat(), resources.displayMetrics
-            )
             textAlign = Paint.Align.CENTER
-            textSize = scaledSizeInPixels
+            textSize = resources.getDimensionPixelSize(R.dimen.text).toFloat()
         }
     }
 
     private val rowTextPaint by lazy {
         Paint(Paint.ANTI_ALIAS_FLAG).apply {
-            val spSize = 12
             color = rowColor
-            val scaledSizeInPixels = TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_SP,
-                spSize.toFloat(), resources.displayMetrics
-            )
             textAlign = Paint.Align.CENTER
-            textSize = scaledSizeInPixels
+            textSize = resources.getDimensionPixelSize(R.dimen.text).toFloat()
         }
     }
 
@@ -103,67 +72,48 @@ class GraphView : View {
         }
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        if (rows.isNotEmpty()) {
+            val maxValue = maxValue()
+            val h = 600
+            ratioOfProportion = (600f - 35 - 35) / maxValue
+            setMeasuredDimension(width, h)
+        }
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val rows = rowCount + 1
-        var today = today.time.minus(day * (rowCount - 1))
-        for (i in 1 until rows) {
-            myHeight = if (animationFlag) {
-                TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    rowValues[i - 1].toFloat(), resources.displayMetrics
-                )
-            } else {
-                TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    2.toFloat(), resources.displayMetrics
-                )
-            }
-            val centerX = width * i / rows.toFloat()
-            val centerY = (height / 2.0f)
+        val row = rowCount + 1
+        for (i in 1 until row) {
+            myHeight = rows[i - 1].value * animationHeight * ratioOfProportion
+            val centerX = width * i / row.toFloat()
+            val offset = resources.getDimensionPixelOffset(R.dimen.offset)
+            val round = resources.getDimensionPixelOffset(R.dimen.round)
             canvas.drawRoundRect(
-                centerX - twoDp,
-                centerY - myHeight,
-                centerX + twoDp,
-                centerY,
-                twoDp * 2,
-                twoDp * 2,
+                centerX - offset,
+                height - myHeight - 35f,
+                centerX + offset,
+                height - 35f,
+                round * 1f,
+                round * 1f,
                 rowPaint
             )
-            canvas.drawText(formatter.format(today), centerX, centerY + 40, textPaint)
-            canvas.drawText(rowValues[i - 1].toString(), centerX, centerY - myHeight - 20, rowTextPaint)
-            today += day
+            canvas.drawText(rows[i - 1].title, centerX, height - 5f, datePaint)
+            canvas.drawText(rows[i - 1].value.toString(), centerX, height - myHeight - 40, rowTextPaint)
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        val touch = true
-        return if (touch) {
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> true
-                MotionEvent.ACTION_UP -> {
-                    myAnimation()
-                    true
-                }
-                else -> false
-            }
-        } else {
-            gestureDetector.onTouchEvent(event)
-        }
-    }
-
-    private fun myAnimation() {
+    fun myAnimation() {
         if (animation != null) {
             animation?.cancel()
             animation = null
-            animationFlag = false
+            animationHeight = 0f
             invalidate()
         } else {
-            animation = ValueAnimator.ofInt(0, 1).apply {
+            animation = ValueAnimator.ofFloat(0f, 1f).apply {
                 duration = 1000
-                addUpdateListener {
-                    animationFlag = true
+                addUpdateListener { animation ->
+                    animationHeight = animation.animatedValue as Float
                     invalidate()
                 }
                 start()
@@ -174,7 +124,21 @@ class GraphView : View {
 
     fun setData(count: Int) {
         rowCount = count
-        rowValues = List(count) { (0..100).random() }
+        for (i in 0 until rowCount) {
+            rows.add(Data(formatter.format(today), (0..100).random()))
+            today -= day
+        }
+        rows.reverse()
+    }
+
+    private fun maxValue(): Int {
+        var max = 0
+        for (i in 0 until rowCount) {
+            if (max < rows[i].value) {
+                max = rows[i].value
+            }
+        }
+        return max
     }
 
 }

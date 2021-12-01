@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="offset">2dp</dimen>
+    <dimen name="round">4dp</dimen>
+    <dimen name="text">12sp</dimen>
+    <dimen name="row_width">4dp</dimen>
+</resources>
