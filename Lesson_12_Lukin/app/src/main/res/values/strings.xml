@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Lesson_12_Lukin</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="map">Карта</string>
+    <string name="title">The Most SPB</string>
+    <string name="empty">Данных нет</string>
+</resources>
